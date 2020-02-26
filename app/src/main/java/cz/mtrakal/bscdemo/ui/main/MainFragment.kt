@@ -41,6 +41,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         model.getNoteList().observe(viewLifecycleOwner, Observer<List<Note>> { notes ->
             viewAdapter.items = notes
+            viewAdapter.model = model
         })
         initRecyclerView()
 

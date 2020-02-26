@@ -1,10 +1,10 @@
 # demo project for BSC
 
-Demo should be almost done (expect one callback [NoteRVAdapter.kt: Line 53](app/src/main/java/cz/mtrakal/bscdemo/ui/main/NoteRVAdapter.kt#L53).
-
-Response of requests is logged with tag: `Response`.
+Demo should be almost done. I'm really not GUI designer at all, so that's the reason why my demo app looks like how it looks :).
+Your requirement `created from standard and native components` it a bit tricky, because standard library for most devs (I think) is a huge amount of well known and often used libs from github as well.
 
 But provided **API is static** and didn't return updated data.
+For visual check, that app do what should do is there logging of requests with tag: `Response`.
 
 ## Installation APK to device
 - connect just one real device with enabled ADB and developer mode
@@ -23,3 +23,4 @@ There are just a small tests on [NoteTest.kt: Line 7](model/src/test/java/cz/mtr
 gradlew test
 ```
 Output of tests is stored on `./[module]/build/reports/tests/testDebugUnitTest/index.html`
+

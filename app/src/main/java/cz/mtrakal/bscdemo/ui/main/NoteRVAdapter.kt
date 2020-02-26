@@ -19,6 +19,7 @@ class NoteRVAdapter(
 ) :
     RecyclerView.Adapter<NoteRVAdapter.ViewHolder>() {
 
+    lateinit var model: NoteViewModel
     var items: List<Note> = emptyList()
         set(value) {
             field = value
@@ -36,7 +37,7 @@ class NoteRVAdapter(
 
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         lateinit var note: Note
         val vNote: TextView = view.vNote
         val vDelete: ImageView = view.vDelete
@@ -47,7 +48,9 @@ class NoteRVAdapter(
                     input(prefill = note.title) { _, charSequence ->
                         val newNote = Note(note.id, charSequence.toString())
                         NetworkService.updateNote(newNote) { response ->
-                            // todo update [MainFragment.model]
+                            if (::model.isInitialized) {
+                                model.updateData()
+                            }
                         }
                     }
                     positiveButton(android.R.string.ok)
@@ -57,7 +60,9 @@ class NoteRVAdapter(
 
             vDelete.setOnClickListener {
                 NetworkService.deleteNote(note.id) { response ->
-                    // todo update [MainFragment.model]
+                    if (::model.isInitialized) {
+                        model.updateData()
+                    }
                 }
             }
         }
