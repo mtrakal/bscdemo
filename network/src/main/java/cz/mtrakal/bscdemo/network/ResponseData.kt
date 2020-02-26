@@ -1,7 +1,6 @@
 package cz.mtrakal.bscdemo.network
 
-import retrofit2.Call
-import retrofit2.Callback
+import android.util.Log
 import retrofit2.Response
 
 sealed class ResponseData<T> {
@@ -23,6 +22,7 @@ sealed class ResponseData<T> {
         fun <T> error(ex: Throwable) = Failure.Exception<T>(ex)
         fun <T> process(f: () -> Response<T>): ResponseData<T> = try {
             val response = f()
+            Log.i("Response", "Is success: ${response.isSuccessful}, code: ${response.code()}")
             if (response.isSuccessful) {
                 Success(response)
             } else {

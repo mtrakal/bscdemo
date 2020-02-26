@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.main.MainFragment"
-        tools:itemCount="10"
         tools:listitem="@layout/item_note" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

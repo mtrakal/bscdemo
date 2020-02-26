@@ -16,7 +16,7 @@ class NoteViewModel : ViewModel() {
 
     fun getNoteList() = _noteList
 
-    private fun updateData() {
+    fun updateData() {
         NetworkService.getNotes { response ->
             run {
                 when (response) {

@@ -16,7 +16,7 @@ object NetworkService {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    public val notesApiService = retrofit.create(NotesApiService::class.java)
+    private val notesApiService = retrofit.create(NotesApiService::class.java)
 
     fun getNotes(onResult: (response: ResponseData<List<Note>>) -> Unit) {
         notesApiService.getNotes().transform(onResult)
@@ -41,7 +41,7 @@ object NetworkService {
 
 fun <T> Call<T>.transform(onResult: (response: ResponseData<T>) -> Unit) {
     enqueue(object : Callback<T> {
-        override fun onResponse(call: Call<T>, response: retrofit2.Response<T>) {
+        override fun onResponse(call: Call<T>, response: Response<T>) {
             onResult(ResponseData.process { response })
         }
 

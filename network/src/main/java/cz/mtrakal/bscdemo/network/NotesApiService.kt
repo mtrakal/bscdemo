@@ -6,7 +6,7 @@ import retrofit2.http.*
 
 interface NotesApiService {
     companion object {
-        const val API_BASE_URL = "https://private-anon-9022d4b885-note10.apiary-mock.com/"
+        const val API_BASE_URL = "http://private-9aad-note10.apiary-mock.com/"
     }
 
     @Headers("Content-Type: application/json")
